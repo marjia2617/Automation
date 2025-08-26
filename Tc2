@@ -1,0 +1,81 @@
+package automation;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Tc2 {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		//number 1
+		WebDriver driver = new ChromeDriver();
+		
+		// number 2
+		driver.navigate().to("http://automationexercise.com");
+		driver.manage().window().maximize();
+		
+		// number 3
+		if(driver.getTitle().equalsIgnoreCase("automation exercise")) {
+			System.out.println("The home page is visible successfully");
+		}
+		
+		Thread.sleep(2000);
+		
+		// number 4
+		WebElement signup = driver.findElement(By.xpath("//a[contains(text(),'Signup')]"));
+		signup.click();
+		Thread.sleep(2000);
+		
+		// number 5
+		
+		WebElement verify1 = driver.findElement(By.xpath("//h2[contains(text(),'Login to')]"));
+		
+		 if(verify1.isDisplayed()) {
+			 System.out.println("Verified");
+		 }
+		 Thread.sleep(2000);
+		 
+		 // number 6
+		 WebElement email = driver.findElement(By.xpath("//input[@data-qa = 'login-email']"));
+	//	 email.clear();
+		 email.sendKeys("manwar2617@gmail.com");
+		 Thread.sleep(2000);
+		 
+		 WebElement password = driver.findElement(By.xpath("//input[@data-qa='login-password']"));
+	//	 password.clear();
+		 password.sendKeys("rahman");
+		 Thread.sleep(2000);
+		 
+		 // number 7
+		 WebElement button = driver.findElement(By.xpath("//button[@data-qa='login-button']"));
+		 button.click();
+		 
+		 // number 8
+		 WebElement visible = driver.findElement(By.xpath("//b[text()='Marjia Anwar']"));
+		   
+		   if(visible.isDisplayed()) {
+			   System.out.println("login imformation is visible");
+		   }
+		   
+		   Thread.sleep(2000);
+		   
+		 //number 9
+           WebElement delete = driver.findElement(By.xpath("//a[contains (text(),'Delete Account')]"));
+		   
+		   delete.click();
+		   Thread.sleep(2000); 
+		   
+		 // number 10
+		   WebElement deleted = driver.findElement(By.xpath("//b[contains(text(),'Deleted')]"));
+		    
+		   if(deleted.isDisplayed()) {
+			   driver.close();
+		   }
+		
+	//	driver.close();
+
+	}
+
+}
