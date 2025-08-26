@@ -1,1 +1,21 @@
+package automation;
+
+
+import org.openqa.selenium.WebDriver;
+
+
+
+public class HomePage {
+	
+	public void getUrl(WebDriver driver) throws InterruptedException {
+	//	WebDriver driver = new ChromeDriver();
+	    driver.get("https://automationexercise.com");
+		Thread.sleep(3000);
+		driver.manage().window().maximize();
+		
+	//	WebElement element1 = driver.findElement(By.xpath("//a[@class ='sc-5eaafc6a-4 eeXkpK' and text() = 'Travel']"));
+	//    element1.click();
+	}
+
+}
 
