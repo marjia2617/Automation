@@ -1,0 +1,76 @@
+package automation;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Tc4 {
+
+	public static void main(String[] args) throws InterruptedException {
+	     
+		// number 1
+		WebDriver driver = new ChromeDriver();
+		
+		// number 2
+		driver.navigate().to("http://automationexercise.com");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		
+		// number 3
+		if(driver.getTitle().equalsIgnoreCase("automation exercise")) {
+			System.out.println("Home Page is visible sucessfully");
+		}
+		
+		// number 4
+		WebElement signup = driver.findElement(By.xpath("//a[contains(text(),'Signup')]"));
+		signup.click();
+		Thread.sleep(2000);
+		
+		// number 5
+		WebElement login = driver.findElement(By.xpath("//h2[contains(text(),'account')]"));
+		if(login.isDisplayed()) {
+			System.out.println("Login to your account is visible");
+		}
+		Thread.sleep(2000);
+		
+		// number 6
+		WebElement email = driver.findElement(By.xpath("//input[@data-qa='login-email']"));
+		email.clear();
+		Thread.sleep(2000);
+		email.sendKeys("manwar2617@gmail.com");
+		WebElement password = driver.findElement(By.xpath("//input[@data-qa='login-password']"));
+		password.clear();
+		Thread.sleep(2000);
+		password.sendKeys("rahman");
+		
+		// number 7
+		WebElement button = driver.findElement(By.xpath("//button[@data-qa='login-button']"));
+		button.click();
+		Thread.sleep(2000);
+		
+		// number 8
+		WebElement info = driver.findElement(By.xpath("//a[contains(text(),'Logged')]//b[contains(text(),'Marjia')]"));
+		 if(info.isDisplayed()) {
+			 System.out.println("Logged in as username is visible");
+		 }
+		 Thread.sleep(2000);
+		 
+		 // number 9
+		 WebElement logout = driver.findElement(By.xpath("//a[text()=' Logout']"));
+		 logout.click();
+		 Thread.sleep(2000);
+		 
+		 // number 10
+		 WebElement login1 = driver.findElement(By.xpath("//h2[contains(text(),'account')]"));
+			if(login1.isDisplayed()) {
+				System.out.println("Login to your account is visible");
+			}
+			Thread.sleep(2000);
+		
+		driver.close();
+		
+
+	}
+
+}
