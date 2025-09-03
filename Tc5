@@ -1,0 +1,61 @@
+package automation;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+// Register user with existing email
+public class Tc5 {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		// number 1
+		WebDriver driver = new ChromeDriver();
+		
+		// number 2
+		driver.navigate().to("http://automationexercise.com");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		
+		// number 3
+		if(driver.getTitle().equalsIgnoreCase("automation exercise")) {
+			System.out.println("Home page is visible sucessfully");
+		}
+		
+		// number 4
+		WebElement sign = driver.findElement(By.xpath("//a[contains(text(),'Signup')]"));
+		sign.click();
+		Thread.sleep(2000);
+		
+		// number 5
+		WebElement verify = driver.findElement(By.xpath("//h2[contains(text(),'Signup')]"));
+		 if(verify.isDisplayed()) {
+			 System.out.println("new user signup is visible");
+		 }
+		 
+		 // number 6
+		 WebElement name = driver.findElement(By.xpath("//input[@data-qa='signup-name']"));
+		 name.sendKeys("Marjia Anwar");
+		 Thread.sleep(2000);
+		 
+		 WebElement email = driver.findElement(By.xpath("//input[@data-qa='signup-email']"));
+		 email.sendKeys("manwar2617@gmail.com");
+		 Thread.sleep(2000);
+		 
+		 // number 7
+		 WebElement button = driver.findElement(By.xpath("//button[@data-qa='signup-button']"));
+		 button.click();
+		 Thread.sleep(2000);
+		 
+		 // number 8
+		 WebElement error = driver.findElement(By.xpath("//p[contains(text(),'already exist')]"));
+		  if(error.isDisplayed()) {
+			  System.out.println("Test Case 5 has been completed");
+			  Thread.sleep(2000);
+		  }
+        
+		driver.close();
+	}
+
+}
