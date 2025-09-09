@@ -1,0 +1,71 @@
+package automation;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Tc6 {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		// number one
+		WebDriver driver = new ChromeDriver();
+		
+        // number 2
+		driver.navigate().to("http://automationexercise.com");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		
+		// number 3
+		if(driver.getTitle().equalsIgnoreCase("automation exercise")) {
+			System.out.println("You are on right page");
+			Thread.sleep(2000);
+		}
+		
+		// number 4
+		WebElement contact = driver.findElement(By.xpath("//a[contains(text(),'Contact')]"));
+		contact.click();
+		Thread.sleep(2000);
+		
+		// number 5
+		WebElement touch = driver.findElement(By.xpath("//h2[contains(text(),'Touch')]"));
+		if(touch.isDisplayed()) {
+			System.out.println("get in touch is visible");
+		}
+		Thread.sleep(2000);
+		
+		// number 6
+		WebElement name = driver.findElement(By.xpath("//input[@data-qa='name']"));
+		name.sendKeys("Marjia Anwar");
+		Thread.sleep(2000);
+		
+		WebElement email = driver.findElement(By.xpath("//input[@data-qa='email']"));
+		email.sendKeys("manwar2617@gmail.com");
+		Thread.sleep(2000);
+		
+		WebElement subject = driver.findElement(By.xpath("//input[@data-qa='subject']"));
+		subject.sendKeys("");
+		Thread.sleep(2000);
+		
+		// number 8
+		WebElement submit = driver.findElement(By.xpath("//input[@data-qa='submit-button']"));
+		submit.click();
+		Thread.sleep(2000);
+		
+		// number 9
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+		Thread.sleep(2000);
+		
+		// number 10
+		WebElement display = driver.findElement(By.xpath("//div[@class = 'status alert alert-success' and contains(text(),'Success! Your')]"));
+		if(display.isDisplayed()) {
+			System.out.println("success message is visible");
+		}
+		
+		driver.close();
+	}
+
+}
