@@ -1,0 +1,107 @@
+package automation;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Tc8 {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		// number 1
+		WebDriver driver = new ChromeDriver();
+		
+		// number 2
+		driver.navigate().to("http://automationexercise.com");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		
+		// number 3
+		if(driver.getTitle().equalsIgnoreCase("automation exercise")) {
+			System.out.println("Home page is visible sucessfully");
+			Thread.sleep(2000);
+		}
+		
+		// number 4
+		WebElement product = driver.findElement(By.xpath("//a[text() = ' Products']"));
+		product.click();
+		Thread.sleep(2000);
+		
+		// number 5
+		WebElement all = driver.findElement(By.xpath("//h2[contains(text(),'Products')]"));
+		if(all.isDisplayed()) {
+			System.out.println("user is navigated to all products");
+			Thread.sleep(2000);
+		}
+		
+		// number 6
+	   List<WebElement> list = driver.findElements(By.xpath("//div[@class='features_items']/div"));
+          if(list.isEmpty()) {
+        	  System.out.println("Products list is not visible");
+          }else {
+        	  System.out.println("The product list is visible");
+          }
+          
+        // number 7
+        WebElement view = driver.findElement(By.xpath("//a[@href='/product_details/1' and text()='View Product']"));
+        view.click();
+        Thread.sleep(2000);
+        
+        // number 8
+      //  driver.getTitle();
+        if(driver.getTitle().contains("Product Details")) {
+        	System.out.println("user is landed to product detail page");
+        }
+        Thread.sleep(2000);
+        
+        // number 9
+		WebElement name = driver.findElement(By.xpath("//h2[contains(text(),'Blue')]"));
+		if (name.isDisplayed()) {
+			System.out.println("Product name is visible");
+		} else {
+			System.out.println("Product name is not visible");
+		}
+
+		WebElement category = driver.findElement(By.xpath("//p[contains(text(),'Category')]"));
+		if (category.isDisplayed()) {
+			System.out.println("Category is visible");
+		} else {
+			System.out.println("Category is not visible");
+		}
+
+		WebElement price = driver.findElement(By.xpath("//span[text()='Rs. 500']"));
+		if (price.isDisplayed()) {
+			System.out.println("Price is visible");
+		} else {
+			System.out.println("Price is not visible");
+		}
+		
+		WebElement availability = driver.findElement(By.xpath("//p[contains(text(),'Stock')]"));
+		if (availability.isDisplayed()) {
+			System.out.println("Product is available");
+		} else {
+			System.out.println("Product is not available");
+		}
+
+		WebElement condition = driver.findElement(By.xpath("//b[text()='Condition:']"));
+		if (condition.isDisplayed()) {
+			System.out.println("Condition is displayed");
+		} else {
+			System.out.println("Condition is not displayed");
+		}
+		
+		WebElement brand = driver.findElement(By.xpath("//p[text()=' Polo']"));
+		if(brand.isDisplayed()) {
+			System.out.println("Brand name is given");
+		} else {
+			System.out.println("Brand name is not given");
+			Thread.sleep(2000);
+		}
+		
+        	 driver.close(); 
+	}
+
+}
