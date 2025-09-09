@@ -1,0 +1,42 @@
+package automation;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Tc7 {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		// number 1
+		WebDriver driver = new ChromeDriver();
+		
+		// number 2
+		driver.navigate().to("http://automationexercise.com");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		
+		// number 3
+		if(driver.getTitle().equalsIgnoreCase("automation exercise")) {
+			System.out.println("home page is visible successfully");
+			Thread.sleep(2000);
+		}
+		
+		// number 4
+		WebElement test = driver.findElement(By.xpath("//a[contains(text(),' Test Cases')]"));
+		test.click();
+		Thread.sleep(2000);
+		
+		// number 5
+		WebElement verify = driver.findElement(By.xpath("//b[text()='Test Cases']"));
+		
+		if(verify.isDisplayed()) {
+			System.out.println("navigated to test cases page sucessfully");
+			Thread.sleep(2000);
+		}
+		
+        driver.close();
+	}
+
+}
